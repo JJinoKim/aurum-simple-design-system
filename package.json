@@ -1,6 +1,6 @@
 {
   "name": "aurum-design-system",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Simple, minimal, technical design system for React + React Native, built with TypeScript and styled-components.",
   "keywords": [
     "design-system",
