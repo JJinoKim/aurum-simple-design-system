@@ -3,7 +3,7 @@
  *
  * Controlled or uncontrolled. Renders a stack/row of radios with shared name.
  */
-import React, { useState } from 'react';
+import { useId, useState } from 'react';
 import styled from 'styled-components';
 import type { SelectableOption } from './types';
 
@@ -69,7 +69,8 @@ export function RadioGroup<T extends string = string>({
 }: RadioGroupProps<T>) {
   const [internal, setInternal] = useState<T | undefined>(defaultValue);
   const current = value ?? internal;
-  const groupName = name ?? React.useId();
+  const generatedId = useId();
+  const groupName = name ?? generatedId;
 
   return (
     <Group $orientation={orientation} role="radiogroup">
