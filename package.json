@@ -19,7 +19,7 @@
   "homepage": "https://github.com/your-org/aurum-design-system#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/your-org/aurum-design-system.git"
+    "url": "git+https://github.com/JJinoKim/aurum-simple-design-system.git"
   },
   "bugs": {
     "url": "https://github.com/your-org/aurum-design-system/issues"
