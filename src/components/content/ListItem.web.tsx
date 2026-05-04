@@ -15,7 +15,7 @@
 import React, { forwardRef } from 'react';
 import styled, { css } from 'styled-components';
 
-export interface ListItemProps extends React.HTMLAttributes<HTMLElement> {
+export interface ListItemProps extends Omit<React.HTMLAttributes<HTMLElement>, 'title'> {
   leading?: React.ReactNode;
   title: React.ReactNode;
   subtitle?: React.ReactNode;

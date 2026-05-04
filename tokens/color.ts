@@ -123,9 +123,15 @@ export const lightColors = {
 // 4. Types — both modes MUST share the same key set
 // -----------------------------------------------------------------------------
 
-export type ColorTokens = typeof darkColors;
-export type ColorKey = keyof ColorTokens;
+export type ColorTokens = { [K in keyof typeof darkColors]: string };
+export type ColorKey = keyof typeof darkColors;
+export type ColorToken = ColorKey;
 
-// Compile-time guarantee the two palettes have identical shape:
-const _shapeCheck: ColorTokens = lightColors;
-void _shapeCheck;
+// Compile-time guarantee: both palettes share identical keys
+type _CheckColorKeys = keyof typeof lightColors extends ColorKey
+  ? ColorKey extends keyof typeof lightColors
+    ? true
+    : never
+  : never;
+const _colorShapeCheck: _CheckColorKeys = true;
+void _colorShapeCheck;

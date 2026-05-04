@@ -6,7 +6,7 @@
  */
 import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
-import type { RadiusToken } from '../../tokens';
+import type { RadiusToken } from '../../../tokens';
 
 export interface ImageProps extends Omit<React.ImgHTMLAttributes<HTMLImageElement>, 'loading'> {
   /** Token name (xs/sm/md/lg/xl/full) or pixel value. Defaults to 'sm'. */

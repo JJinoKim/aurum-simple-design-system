@@ -17,7 +17,7 @@
  */
 import React from 'react';
 import styled from 'styled-components';
-import type { Theme } from '../../tokens';
+import type { Theme } from '../../../tokens';
 
 export type IconSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 export type IconColorToken = 'text' | 'subtext' | 'primary' | 'success' | 'error' | 'warning' | 'inverse';

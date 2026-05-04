@@ -9,7 +9,7 @@
  */
 import React from 'react';
 import styled, { css } from 'styled-components';
-import type { ColorToken } from '../../tokens';
+import type { ColorToken } from '../../../tokens';
 
 export type ShapeSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | number;
 

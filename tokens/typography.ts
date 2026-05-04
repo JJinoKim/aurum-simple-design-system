@@ -27,18 +27,22 @@ export const fontSize = {
   xl:    22,
   '2xl': 28,
   '3xl': 36,
+  '4xl': 44,
+  '5xl': 56,
 } as const;
 
 export const fontWeight = {
   regular:  '400',
   medium:   '500',
   semibold: '600',
+  bold:     '700',
 } as const;
 
 /** Multipliers, not px. Apply against fontSize at composition time. */
 export const lineHeight = {
   tight:   1,      // single-line numeric readouts
   display: 1.2,    // 22+
+  heading: 1.3,    // headings (h1–h3)
   body:    1.45,   // default running text
 } as const;
 

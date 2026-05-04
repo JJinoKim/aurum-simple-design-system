@@ -36,6 +36,7 @@ export const spaceSemantic = {
 } as const;
 
 export type SpaceKey = keyof typeof space;
+export type SpaceToken = SpaceKey;
 export type SpaceSemanticKey = keyof typeof spaceSemantic;
 
 /**

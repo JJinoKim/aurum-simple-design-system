@@ -18,7 +18,7 @@ import {
   letterSpacing,
   textStyle,
 } from './typography';
-import { shadowDark, shadowLight, shadowRn } from './shadow';
+import { shadowDark, shadowLight, shadowRn, type ShadowKey } from './shadow';
 import { zIndex } from './zIndex';
 import { duration, easing, transition } from './animation';
 
@@ -58,13 +58,22 @@ export const darkTheme = {
   ...sharedTokens,
 };
 
-/** Public theme type — extend styled-components' DefaultTheme with this. */
-export type Theme = typeof lightTheme;
+/**
+ * Public theme type — extend styled-components' DefaultTheme with this.
+ * Defined as a structural type so both lightTheme and darkTheme satisfy it.
+ */
+export type Theme = {
+  name: 'light' | 'dark';
+  color: ColorTokens;
+  shadow: Record<ShadowKey, string>;
+} & typeof sharedTokens;
+
 export type ThemeName = Theme['name'];
 
-/** Compile-time guard: dark and light have identical shape. */
-const _themeShape: Theme = darkTheme;
-void _themeShape;
+/** Compile-time guards: both themes must satisfy the common shape. */
+const _lightCheck: Theme = lightTheme;
+const _darkCheck: Theme = darkTheme;
+void _lightCheck; void _darkCheck;
 
 /** Both color palettes share key set (already enforced in color.ts). */
 export type { ColorTokens };

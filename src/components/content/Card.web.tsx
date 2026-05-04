@@ -76,7 +76,7 @@ const Subtitle = styled.p`
   color: ${({ theme }) => theme.color.subtext};
 `;
 
-export interface CardHeaderProps extends React.HTMLAttributes<HTMLElement> {
+export interface CardHeaderProps extends Omit<React.HTMLAttributes<HTMLElement>, 'title'> {
   title?: React.ReactNode;
   subtitle?: React.ReactNode;
   actions?: React.ReactNode;
@@ -96,7 +96,7 @@ const CardHeader = ({ title, subtitle, actions, bordered = false, children, ...r
   </Header>
 );
 
-const Body = styled.div.attrs({ 'data-card-section': '' })`
+const Body = styled.div.attrs<{ 'data-card-section': string }>({ 'data-card-section': '' })`
   padding: ${({ theme }) => theme.space[4]}px;
   font-size: ${({ theme }) => theme.font.size.md}px;
   line-height: ${({ theme }) => theme.font.lineHeight.body};

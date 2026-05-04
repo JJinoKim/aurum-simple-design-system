@@ -6,7 +6,7 @@
  */
 import React from 'react';
 import styled, { css } from 'styled-components';
-import type { SpaceToken } from '../../tokens';
+import type { SpaceToken } from '../../../tokens';
 
 export interface SeparatorProps extends React.HTMLAttributes<HTMLDivElement> {
   orientation?: 'horizontal' | 'vertical';

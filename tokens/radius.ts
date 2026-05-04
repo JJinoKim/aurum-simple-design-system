@@ -15,6 +15,7 @@ export const radius = {
 } as const;
 
 export type RadiusKey = keyof typeof radius;
+export type RadiusToken = RadiusKey;
 
 export const radiusPx = {
   xs:  '4px',

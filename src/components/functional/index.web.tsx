@@ -13,7 +13,7 @@
 import React, { createContext, forwardRef, useCallback, useContext, useEffect, useId, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import styled, { css } from 'styled-components';
-import type { SpaceToken, RadiusToken } from '../../tokens';
+import type { SpaceToken, RadiusToken } from '../../../tokens';
 
 type Token = keyof any;
 
@@ -288,7 +288,9 @@ export function FocusScope({ trap = true, autoFocus = true, restoreFocus = true,
       if (e.key !== 'Tab' || !ref.current) return;
       const focusables = ref.current.querySelectorAll<HTMLElement>(FOCUSABLE);
       if (focusables.length === 0) { e.preventDefault(); return; }
-      const first = focusables[0], last = focusables[focusables.length - 1];
+      const first = focusables[0];
+      const last = focusables[focusables.length - 1];
+      if (!first || !last) return;
       if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
       else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
     };
@@ -363,7 +365,7 @@ export function RovingFocusGroup({
     let next = idx + delta;
     if (next < 0) next = loop ? ids.length - 1 : 0;
     if (next >= ids.length) next = loop ? 0 : ids.length - 1;
-    setCurrent(ids[next]);
+    setCurrent(ids[next]!);
   };
 
   const onKeyDown: React.KeyboardEventHandler = (e) => {
