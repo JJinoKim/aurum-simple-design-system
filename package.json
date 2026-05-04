@@ -1,6 +1,6 @@
 {
   "name": "aurum-design-system",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Simple, minimal, technical design system for React + React Native, built with TypeScript and styled-components.",
   "keywords": [
     "design-system",
@@ -70,8 +70,12 @@
     "styled-components": ">=6.0.0"
   },
   "peerDependenciesMeta": {
-    "react-dom": { "optional": true },
-    "react-native": { "optional": true }
+    "react-dom": {
+      "optional": true
+    },
+    "react-native": {
+      "optional": true
+    }
   },
   "devDependencies": {
     "@types/react": "^18.3.0",
