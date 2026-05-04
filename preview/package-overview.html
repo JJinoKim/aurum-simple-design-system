@@ -1,0 +1,684 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Aurum — npm package overview</title>
+<link rel="stylesheet" href="../colors_and_type.css" />
+<style>
+  :root {
+    --mono: 'JetBrains Mono', 'SF Mono', 'Menlo', 'Consolas', monospace;
+  }
+  html, body { background: var(--color-background); color: var(--color-text); }
+  body {
+    margin: 0;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-feature-settings: 'cv11', 'ss01';
+    -webkit-font-smoothing: antialiased;
+  }
+  .stage {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 56px 48px 80px;
+  }
+
+  /* -------- header -------- */
+  .crumb {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-subtext);
+    margin: 0 0 14px;
+  }
+  h1 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 44px;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    margin: 0 0 12px;
+    text-wrap: balance;
+  }
+  .lede {
+    font-size: 17px;
+    line-height: 1.55;
+    color: var(--color-subtext);
+    max-width: 70ch;
+    margin: 0 0 36px;
+    text-wrap: pretty;
+  }
+  .pill-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 56px;
+  }
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 12px;
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    color: var(--color-subtext);
+    background: var(--color-surface);
+  }
+  .pill .dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--color-primary);
+  }
+
+  /* -------- section -------- */
+  section { margin-bottom: 64px; }
+  .label {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-subtext);
+    margin: 0 0 18px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--color-border);
+  }
+  h2 {
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin: 0 0 20px;
+  }
+
+  /* -------- grid -------- */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  .grid-3 { grid-template-columns: repeat(3, 1fr); }
+
+  .card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 22px 22px 24px;
+  }
+  .card h3 {
+    font-size: 13px;
+    font-weight: 600;
+    margin: 0 0 6px;
+    letter-spacing: 0;
+  }
+  .card .desc {
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--color-subtext);
+    margin: 0 0 14px;
+    text-wrap: pretty;
+  }
+
+  /* -------- code -------- */
+  .code {
+    font-family: var(--mono);
+    font-size: 12.5px;
+    line-height: 1.62;
+    background: var(--color-card);
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    padding: 18px 20px;
+    color: var(--color-text);
+    overflow-x: auto;
+    white-space: pre;
+    margin: 0;
+  }
+  .code .k { color: #C792EA; }       /* keyword */
+  .code .s { color: #C3E88D; }       /* string */
+  .code .c { color: var(--color-subtext); font-style: italic; } /* comment */
+  .code .p { color: var(--color-primary); }    /* punctuation accent */
+  .code .n { color: #82B1FF; }       /* number / identifier */
+  .code .v { color: #FFCB6B; }       /* variable */
+  .code .t { color: #F07178; }       /* type */
+
+  .code-tight { padding: 14px 18px; font-size: 12px; }
+
+  /* -------- file tree -------- */
+  .tree {
+    font-family: var(--mono);
+    font-size: 12.5px;
+    line-height: 1.85;
+    color: var(--color-text);
+    margin: 0;
+  }
+  .tree .dir { color: var(--color-text); font-weight: 500; }
+  .tree .file { color: var(--color-subtext); }
+  .tree .new { color: var(--color-primary); font-weight: 500; }
+  .tree .cmt { color: var(--color-subtext); padding-left: 12px; font-style: italic; }
+
+  /* -------- pipeline -------- */
+  .pipeline {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+    margin-top: 8px;
+  }
+  .step {
+    background: var(--color-card);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 14px 14px 16px;
+    position: relative;
+  }
+  .step .num {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: var(--color-subtext);
+    margin-bottom: 6px;
+  }
+  .step .name {
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+  .step .what {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--color-subtext);
+    line-height: 1.4;
+  }
+  .step.active {
+    border-color: var(--color-primary);
+    background: var(--color-primary-subtle);
+  }
+  .step.active .num { color: var(--color-primary); }
+
+  /* -------- export matrix -------- */
+  .matrix {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  .matrix th, .matrix td {
+    text-align: left;
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .matrix th {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-subtext);
+    font-weight: 500;
+  }
+  .matrix td.path {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--color-text);
+  }
+  .matrix td.fmt {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--color-subtext);
+  }
+  .matrix tr:last-child td { border-bottom: none; }
+
+  /* -------- demo block -------- */
+  .demo-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    align-items: stretch;
+  }
+  .demo-preview {
+    background: var(--color-card);
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    justify-content: center;
+  }
+  .demo-preview .row {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+  .demo-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 36px;
+    padding: 0 16px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    border: 1px solid transparent;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+  }
+  .demo-btn.primary {
+    background: var(--color-primary);
+    color: white;
+  }
+  .demo-btn.secondary {
+    background: var(--color-surface);
+    color: var(--color-text);
+    border-color: var(--color-border);
+  }
+  .demo-btn.ghost {
+    background: transparent;
+    color: var(--color-text);
+  }
+  .demo-input {
+    height: 36px;
+    background: var(--color-input);
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    padding: 0 12px;
+    color: var(--color-text);
+    font: inherit;
+    font-size: 13px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .demo-input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+  }
+  .demo-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    padding: 16px;
+    flex: 1;
+  }
+  .demo-card .title {
+    font-size: 13px; font-weight: 600; margin-bottom: 4px;
+  }
+  .demo-card .sub {
+    font-size: 12px; color: var(--color-subtext);
+  }
+  .badge-mode {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: var(--color-primary-subtle);
+    color: var(--color-primary);
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  /* -------- footnote -------- */
+  .footnote {
+    font-size: 12.5px;
+    line-height: 1.6;
+    color: var(--color-subtext);
+    border-top: 1px solid var(--color-border);
+    padding-top: 24px;
+    text-wrap: pretty;
+  }
+  .footnote code {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    color: var(--color-text);
+    background: var(--color-card);
+    padding: 1px 6px;
+    border-radius: 4px;
+  }
+</style>
+</head>
+<body>
+
+<div class="stage">
+
+  <p class="crumb">Aurum Design System · npm package</p>
+  <h1>Ship Aurum to npm.</h1>
+  <p class="lede">
+    Tokens, themes, and components are already authored as React + TypeScript +
+    styled-components. The package layer wraps them in a tsup build and a
+    GitHub Actions release pipeline, so a single <code style="font-family:var(--mono)">git push --tags</code> ships
+    a versioned bundle to the registry — with light/dark theming, type
+    declarations, and three subpath entries.
+  </p>
+  <div class="pill-row">
+    <span class="pill"><span class="dot"></span>react ≥ 18</span>
+    <span class="pill"><span class="dot"></span>styled-components 6</span>
+    <span class="pill"><span class="dot"></span>typescript 5</span>
+    <span class="pill"><span class="dot"></span>esm + cjs + .d.ts</span>
+    <span class="pill"><span class="dot"></span>provenance signed</span>
+  </div>
+
+  <!-- ========== 1. PACKAGE LAYOUT ========== -->
+  <section>
+    <p class="label">01 · Package layout</p>
+    <h2>What ships, and what stays in the repo.</h2>
+
+    <div class="grid">
+
+      <div class="card">
+        <h3>Repo tree (new files highlighted)</h3>
+        <p class="desc">Source stays as authored — TS + TSX. Only <code style="font-family:var(--mono)">dist/</code> is generated.</p>
+<pre class="tree">
+<span class="dir">aurum-design-system/</span>
+├── <span class="new">package.json</span>          <span class="cmt"># entry points, peers, scripts</span>
+├── <span class="new">tsconfig.json</span>         <span class="cmt"># strict, ES2020, bundler resolution</span>
+├── <span class="new">tsup.config.ts</span>        <span class="cmt"># 3-entry build (index, tokens, native)</span>
+├── <span class="new">.eslintrc.cjs</span>
+├── <span class="new">LICENSE</span>               <span class="cmt"># MIT</span>
+├── <span class="new">.gitignore</span>  <span class="new">.npmignore</span>
+├── <span class="dir">.github/workflows/</span>
+│   ├── <span class="new">ci.yml</span>            <span class="cmt"># lint + typecheck + build matrix</span>
+│   └── <span class="new">release.yml</span>       <span class="cmt"># publish on v*.*.* tag</span>
+├── <span class="dir">tokens/</span>               <span class="cmt"># cross-platform source of truth</span>
+├── <span class="dir">src/</span>
+│   ├── <span class="new">index.ts</span>          <span class="cmt"># web entry — full surface</span>
+│   ├── <span class="new">native.ts</span>         <span class="cmt"># RN entry</span>
+│   ├── <span class="dir">theme/</span>            <span class="cmt"># ThemeProvider, GlobalStyle</span>
+│   └── <span class="dir">components/</span>       <span class="cmt"># forms, content, overlays, …</span>
+└── <span class="dir">dist/</span>                 <span class="cmt"># generated — gitignored</span>
+    ├── <span class="file">index.mjs / .cjs / .d.ts</span>
+    ├── <span class="file">tokens.mjs / .cjs / .d.ts</span>
+    └── <span class="file">native.mjs / .cjs / .d.ts</span>
+</pre>
+      </div>
+
+      <div class="card">
+        <h3>Three entry points</h3>
+        <p class="desc">Subpath exports keep tokens reachable without pulling React.</p>
+        <table class="matrix">
+          <thead>
+            <tr><th>Specifier</th><th>What you get</th><th>Format</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="path">aurum-design-system</td>
+              <td>Tokens + ThemeProvider + all web components</td>
+              <td class="fmt">esm · cjs</td>
+            </tr>
+            <tr>
+              <td class="path">…/tokens</td>
+              <td>Raw scales + light/dark themes (no React)</td>
+              <td class="fmt">esm · cjs</td>
+            </tr>
+            <tr>
+              <td class="path">…/native</td>
+              <td>React Native entry (resolves <code style="font-family:var(--mono); font-size:11px">*.native.tsx</code>)</td>
+              <td class="fmt">esm · cjs</td>
+            </tr>
+          </tbody>
+        </table>
+        <div style="margin-top: 16px;">
+          <p class="desc" style="margin: 0;">
+            Each entry ships sourcemaps and a <code style="font-family:var(--mono); font-size:11px">.d.ts</code> file. The
+            package is marked <code style="font-family:var(--mono); font-size:11px">"sideEffects": false</code> so consumers
+            tree-shake unused exports.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========== 2. CONSUMING IT ========== -->
+  <section>
+    <p class="label">02 · Consuming it</p>
+    <h2>Install, wrap, render.</h2>
+
+    <div class="grid">
+
+      <div class="card">
+        <h3>Install</h3>
+        <p class="desc">Peer deps stay external — your app's React/styled-components are deduped.</p>
+<pre class="code"><span class="c">$ npm install aurum-design-system styled-components react react-dom</span></pre>
+      </div>
+
+      <div class="card">
+        <h3>Wrap your app</h3>
+        <p class="desc"><code style="font-family:var(--mono); font-size:11.5px">ThemeProvider</code> takes <code style="font-family:var(--mono); font-size:11.5px">initialMode</code> and exposes <code style="font-family:var(--mono); font-size:11.5px">useThemeMode().toggle</code>.</p>
+<pre class="code"><span class="k">import</span> { ThemeProvider, GlobalStyle } <span class="k">from</span> <span class="s">'aurum-design-system'</span>;
+
+<span class="k">export function</span> <span class="t">App</span>() {
+  <span class="k">return</span> (
+    &lt;<span class="t">ThemeProvider</span> initialMode=<span class="s">"dark"</span>&gt;
+      &lt;<span class="t">GlobalStyle</span> /&gt;
+      &lt;<span class="t">YourRoutes</span> /&gt;
+    &lt;/<span class="t">ThemeProvider</span>&gt;
+  );
+}</pre>
+      </div>
+
+      <div class="card" style="grid-column: span 2;">
+        <h3>Use the components</h3>
+        <p class="desc">Every component reads tokens through <code style="font-family:var(--mono); font-size:11.5px">styled(theme =&gt; …)</code>; mode swaps at runtime.</p>
+        <div class="demo-row">
+<pre class="code"><span class="k">import</span> {
+  Button, Input, Card,
+  useThemeMode,
+} <span class="k">from</span> <span class="s">'aurum-design-system'</span>;
+
+<span class="k">export function</span> <span class="t">SignIn</span>() {
+  <span class="k">const</span> { mode, toggle } = <span class="v">useThemeMode</span>();
+  <span class="k">return</span> (
+    &lt;<span class="t">Card</span>&gt;
+      &lt;<span class="t">Card.Header</span> title={<span class="s">"Sign in"</span>} /&gt;
+      &lt;<span class="t">Card.Body</span>&gt;
+        &lt;<span class="t">Input</span> placeholder=<span class="s">"you@aurum.dev"</span> /&gt;
+        &lt;<span class="t">Button</span> variant=<span class="s">"primary"</span>&gt;Continue&lt;/<span class="t">Button</span>&gt;
+        &lt;<span class="t">Button</span> variant=<span class="s">"ghost"</span> onClick={toggle}&gt;
+          {mode === <span class="s">'dark'</span> ? <span class="s">'Light'</span> : <span class="s">'Dark'</span>} mode
+        &lt;/<span class="t">Button</span>&gt;
+      &lt;/<span class="t">Card.Body</span>&gt;
+    &lt;/<span class="t">Card</span>&gt;
+  );
+}</pre>
+          <div class="demo-preview">
+            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom: 4px;">
+              <span style="font-size: 13px; font-weight: 600;">Sign in</span>
+              <span class="badge-mode">● dark</span>
+            </div>
+            <input class="demo-input" type="text" placeholder="you@aurum.dev" />
+            <div class="row">
+              <button class="demo-btn primary">Continue</button>
+              <button class="demo-btn ghost">Light mode</button>
+            </div>
+            <div style="font-family: var(--mono); font-size: 10.5px; color: var(--color-subtext); margin-top: 4px; letter-spacing: 0.04em;">
+              theme.color.primary · #0E7C7B
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========== 3. BUILD PIPELINE ========== -->
+  <section>
+    <p class="label">03 · Build pipeline</p>
+    <h2>tsup → ESM, CJS, declarations.</h2>
+
+    <div class="card" style="margin-bottom: 16px;">
+      <div class="pipeline">
+        <div class="step">
+          <div class="num">01</div>
+          <div class="name">Source</div>
+          <div class="what">tokens/<br/>src/**/*.tsx</div>
+        </div>
+        <div class="step">
+          <div class="num">02</div>
+          <div class="name">Lint + tsc</div>
+          <div class="what">eslint<br/>tsc --noEmit</div>
+        </div>
+        <div class="step active">
+          <div class="num">03</div>
+          <div class="name">tsup (esbuild)</div>
+          <div class="what">3 entries ×<br/>2 formats</div>
+        </div>
+        <div class="step">
+          <div class="num">04</div>
+          <div class="name">.d.ts rollup</div>
+          <div class="what">api-extractor<br/>per entry</div>
+        </div>
+        <div class="step">
+          <div class="num">05</div>
+          <div class="name">npm pack</div>
+          <div class="what">dist/ + tokens/<br/>+ src/ + README</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h3>tsup.config.ts</h3>
+        <p class="desc">Three named entries, dual format, externalized peers.</p>
+<pre class="code code-tight"><span class="k">import</span> { defineConfig } <span class="k">from</span> <span class="s">'tsup'</span>;
+
+<span class="k">export default</span> <span class="v">defineConfig</span>({
+  entry: {
+    index:  <span class="s">'src/index.ts'</span>,
+    tokens: <span class="s">'tokens/index.ts'</span>,
+    native: <span class="s">'src/native.ts'</span>,
+  },
+  format: [<span class="s">'cjs'</span>, <span class="s">'esm'</span>],
+  dts: <span class="n">true</span>,
+  sourcemap: <span class="n">true</span>,
+  treeshake: <span class="n">true</span>,
+  external: [
+    <span class="s">'react'</span>, <span class="s">'react-dom'</span>,
+    <span class="s">'react-native'</span>,
+    <span class="s">'styled-components'</span>,
+  ],
+});</pre>
+      </div>
+
+      <div class="card">
+        <h3>package.json — exports</h3>
+        <p class="desc">Modern <code style="font-family:var(--mono); font-size:11.5px">"exports"</code> map; legacy <code style="font-family:var(--mono); font-size:11.5px">main</code>/<code style="font-family:var(--mono); font-size:11.5px">module</code> kept for old bundlers.</p>
+<pre class="code code-tight"><span class="v">"exports"</span>: {
+  <span class="v">"."</span>: {
+    <span class="v">"types"</span>:   <span class="s">"./dist/index.d.ts"</span>,
+    <span class="v">"import"</span>:  <span class="s">"./dist/index.mjs"</span>,
+    <span class="v">"require"</span>: <span class="s">"./dist/index.cjs"</span>
+  },
+  <span class="v">"./tokens"</span>: { <span class="c">/* … */</span> },
+  <span class="v">"./native"</span>: { <span class="c">/* … */</span> }
+},
+<span class="v">"sideEffects"</span>: <span class="n">false</span>,
+<span class="v">"peerDependencies"</span>: {
+  <span class="v">"react"</span>: <span class="s">"&gt;=18"</span>,
+  <span class="v">"styled-components"</span>: <span class="s">"&gt;=6"</span>
+}</pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 4. CI/CD ========== -->
+  <section>
+    <p class="label">04 · GitHub Actions</p>
+    <h2>Two workflows. Tag → publish.</h2>
+
+    <div class="grid">
+
+      <div class="card">
+        <h3>ci.yml — every push &amp; PR</h3>
+        <p class="desc">Matrix on Node 18 + 20. Fails fast on lint, type, or build errors before merge.</p>
+<pre class="code code-tight"><span class="v">on</span>: { push: { branches: [main] }, pull_request: }
+<span class="v">jobs</span>:
+  <span class="v">verify</span>:
+    <span class="v">strategy</span>: { matrix: { node: [<span class="n">18</span>, <span class="n">20</span>] } }
+    <span class="v">steps</span>:
+      - <span class="v">uses</span>: actions/checkout@v4
+      - <span class="v">uses</span>: actions/setup-node@v4
+        <span class="v">with</span>: { node-version: <span class="p">${{ matrix.node }}</span>, cache: npm }
+      - <span class="v">run</span>: npm ci
+      - <span class="v">run</span>: npm run lint
+      - <span class="v">run</span>: npm run typecheck
+      - <span class="v">run</span>: npm run build
+      - <span class="v">run</span>: npm pack --dry-run</pre>
+      </div>
+
+      <div class="card">
+        <h3>release.yml — on <code style="font-family:var(--mono);font-size:11.5px">v*.*.*</code> tag</h3>
+        <p class="desc">Verifies the tag matches <code style="font-family:var(--mono);font-size:11.5px">package.json</code>, rebuilds, publishes with provenance, drafts a GitHub Release.</p>
+<pre class="code code-tight"><span class="v">on</span>: { push: { tags: [<span class="s">'v*.*.*'</span>] } }
+<span class="v">jobs</span>:
+  <span class="v">publish</span>:
+    <span class="v">permissions</span>: { id-token: write, contents: write }
+    <span class="v">steps</span>:
+      - <span class="v">run</span>: <span class="c"># tag === package.version ?</span>
+      - <span class="v">run</span>: npm ci &amp;&amp; npm run build
+      - <span class="v">run</span>: npm publish --access public --provenance
+        <span class="v">env</span>: { NODE_AUTH_TOKEN: <span class="p">${{ secrets.NPM_TOKEN }}</span> }
+      - <span class="v">uses</span>: softprops/action-gh-release@v2</pre>
+      </div>
+
+      <div class="card" style="grid-column: span 2;">
+        <h3>Release flow — what the maintainer types</h3>
+        <p class="desc">All version juggling stays in <code style="font-family:var(--mono); font-size:11.5px">package.json</code>; the workflow refuses to publish if the tag drifts.</p>
+<pre class="code"><span class="c"># 1. bump the version (also writes the git tag locally)</span>
+<span class="k">$</span> npm version minor   <span class="c"># 0.1.0 → 0.2.0</span>
+
+<span class="c"># 2. push commit + tag — release.yml takes over from here</span>
+<span class="k">$</span> git push origin main --follow-tags
+
+<span class="c"># 3. CI runs lint → typecheck → build → npm publish --provenance</span>
+<span class="c">#    GitHub Release is drafted with auto-generated notes.</span></pre>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========== 5. SECRETS / SETUP ========== -->
+  <section>
+    <p class="label">05 · One-time setup</p>
+    <h2>Three things to wire before the first publish.</h2>
+
+    <div class="grid grid-3">
+      <div class="card">
+        <h3>NPM_TOKEN</h3>
+        <p class="desc">
+          npmjs.com → <em>Access Tokens</em> → <strong>Granular automation</strong>
+          token scoped to this package. Add it in the repo's
+          <code style="font-family:var(--mono); font-size:11.5px">Settings → Secrets → Actions</code>.
+        </p>
+      </div>
+      <div class="card">
+        <h3>npm provenance</h3>
+        <p class="desc">
+          The release job sets <code style="font-family:var(--mono); font-size:11.5px">id-token: write</code> and
+          publishes with <code style="font-family:var(--mono); font-size:11.5px">--provenance</code>, so the
+          published tarball is signed by GitHub OIDC. Nothing for you to configure.
+        </p>
+      </div>
+      <div class="card">
+        <h3>Repository fields</h3>
+        <p class="desc">
+          Update <code style="font-family:var(--mono); font-size:11.5px">repository.url</code>,
+          <code style="font-family:var(--mono); font-size:11.5px">homepage</code>, and
+          <code style="font-family:var(--mono); font-size:11.5px">bugs</code> in
+          <code style="font-family:var(--mono); font-size:11.5px">package.json</code> to your real org/repo
+          before the first tag.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <p class="footnote">
+    Files added in this pass: <code>package.json</code> · <code>tsconfig.json</code> ·
+    <code>tsup.config.ts</code> · <code>.eslintrc.cjs</code> · <code>.gitignore</code> ·
+    <code>.npmignore</code> · <code>LICENSE</code> · <code>src/index.ts</code> ·
+    <code>src/native.ts</code> · <code>src/components/{content,functional,overlays,visual}/index.ts</code> ·
+    <code>.github/workflows/ci.yml</code> · <code>.github/workflows/release.yml</code>.
+    Existing token + component sources are untouched — the package layer is purely additive.
+  </p>
+
+</div>
+
+</body>
+</html>

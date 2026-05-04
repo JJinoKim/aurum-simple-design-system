@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8" />
+<title>Aurum — Functional Primitives</title>
+<link rel="stylesheet" href="../colors_and_type.css" />
+<style>
+  body { margin: 0; padding: 32px; background: var(--color-background); color: var(--color-text); font-family: var(--font-sans); }
+  .grid { display: grid; gap: 24px; grid-template-columns: 1fr 1fr; max-width: 800px; }
+  .tile { background: var(--color-card); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 20px; }
+  .tile h4 { margin: 0 0 4px; font-size: 14px; font-weight: 600; color: var(--color-text); }
+  .tile .desc { font-size: 12px; color: var(--color-subtext); margin-bottom: 14px; }
+  .tile code { font-family: var(--font-mono); font-size: 11px; background: var(--color-surface); padding: 1px 5px; border-radius: 3px; color: var(--color-primary-text); }
+
+  .demo-stack { display: flex; gap: 8px; flex-direction: column; }
+  .chip { display: inline-block; padding: 4px 10px; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-xs); font-size: 12px; }
+
+  .group { display: inline-flex; }
+  .group > .gbtn { background: var(--color-card); border: 1px solid var(--color-border); color: var(--color-text); height: 32px; padding: 0 14px; font-size: 13px; cursor: pointer; }
+  .group > .gbtn + .gbtn { margin-left: -1px; }
+  .group > .gbtn:first-child { border-top-left-radius: var(--radius-sm); border-bottom-left-radius: var(--radius-sm); }
+  .group > .gbtn:last-child  { border-top-right-radius: var(--radius-sm); border-bottom-right-radius: var(--radius-sm); }
+  .group > .gbtn.active { background: var(--color-primary-subtle); border-color: var(--color-primary); color: var(--color-primary-text); z-index: 1; }
+
+  .anchor { color: var(--color-primary-text); text-decoration: none; font-size: 13px; }
+  .anchor:hover { text-decoration: underline; }
+
+  .scroll { max-height: 110px; overflow-y: auto; padding-right: 8px; border: 1px solid var(--color-border); border-radius: var(--radius-xs); padding: 8px 12px; font-size: 13px; line-height: 1.6; color: var(--color-subtext); }
+  .scroll::-webkit-scrollbar { width: 6px; }
+  .scroll::-webkit-scrollbar-thumb { background: var(--color-border); border-radius: 3px; }
+
+  .focus-demo { display: flex; gap: 6px; padding: 8px; background: var(--color-surface); border: 1px dashed var(--color-primary); border-radius: var(--radius-xs); }
+  .focus-demo .item { padding: 4px 10px; background: var(--color-card); border: 1px solid var(--color-border); border-radius: var(--radius-xs); font-size: 12px; }
+  .focus-demo .item.active { outline: 2px solid var(--color-primary); outline-offset: 1px; }
+  .focus-demo .item.active::before { content: '⇥ '; color: var(--color-primary); }
+
+  .hidden-row { display: flex; align-items: center; gap: 8px; }
+  .icon-btn { width: 32px; height: 32px; border-radius: var(--radius-xs); background: var(--color-surface); border: 1px solid var(--color-border); display: grid; place-items: center; color: var(--color-text); }
+  .vh-note { font-size: 11px; color: var(--color-subtext); }
+</style>
+</head>
+<body>
+  <div class="grid">
+
+    <div class="tile">
+      <h4>Box / Stack</h4>
+      <div class="desc">Spacing primitives — <code>p</code>, <code>gap</code>, <code>bg</code></div>
+      <div class="demo-stack">
+        <span class="chip">VStack gap={2}</span>
+        <span class="chip">VStack gap={2}</span>
+        <span class="chip">VStack gap={2}</span>
+      </div>
+    </div>
+
+    <div class="tile">
+      <h4>Group</h4>
+      <div class="desc"><code>attached</code> collapses borders into one cluster</div>
+      <div class="group">
+        <button class="gbtn">Day</button>
+        <button class="gbtn active">Week</button>
+        <button class="gbtn">Month</button>
+        <button class="gbtn">Year</button>
+      </div>
+    </div>
+
+    <div class="tile">
+      <h4>Anchor</h4>
+      <div class="desc">Themed <code>&lt;a&gt;</code> · auto-detects external links</div>
+      <div style="display: flex; flex-direction: column; gap: 6px;">
+        <a class="anchor" href="#">Internal link →</a>
+        <a class="anchor" href="https://example.com">External link ↗</a>
+      </div>
+    </div>
+
+    <div class="tile">
+      <h4>RovingFocusGroup</h4>
+      <div class="desc">Single tab stop · arrow keys to navigate</div>
+      <div class="focus-demo">
+        <span class="item">Files</span>
+        <span class="item active">Activity</span>
+        <span class="item">Members</span>
+        <span class="item">Settings</span>
+      </div>
+    </div>
+
+    <div class="tile">
+      <h4>ScrollView</h4>
+      <div class="desc">Themed scroll container with subtle scrollbar</div>
+      <div class="scroll">
+        Tokens are the source of truth for color, spacing, type, radius, shadow, and motion. Components consume tokens through styled-components themes; semantic CSS variables mirror the same values for HTML surfaces. Tokens cascade by intent — surface → card → border keeps elevation legible without hand-picked grays.
+      </div>
+    </div>
+
+    <div class="tile">
+      <h4>VisuallyHidden / FocusScope / Portal</h4>
+      <div class="desc">Headless utilities — no visible chrome</div>
+      <div class="hidden-row">
+        <button class="icon-btn">×<span class="vh-note" style="display:none">Close dialog</span></button>
+        <span class="vh-note">VisuallyHidden labels icon-only buttons. FocusScope traps Tab inside modals. Portal renders into <code>document.body</code>.</span>
+      </div>
+    </div>
+
+  </div>
+</body></html>

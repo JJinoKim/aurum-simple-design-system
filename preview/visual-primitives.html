@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8" />
+<title>Aurum — Visual Primitives</title>
+<link rel="stylesheet" href="../colors_and_type.css" />
+<style>
+  body { margin: 0; padding: 32px; background: var(--color-background); color: var(--color-text); font-family: var(--font-sans); }
+  .grid { display: grid; gap: 20px; grid-template-columns: 1fr 1fr; max-width: 800px; }
+  .tile { background: var(--color-card); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 18px; }
+  .tile h4 { margin: 0 0 4px; font-size: 13px; font-weight: 600; }
+  .tile .desc { font-size: 12px; color: var(--color-subtext); margin-bottom: 14px; }
+  .row { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+
+  /* LinearGradient */
+  .grad { width: 100%; height: 80px; border-radius: var(--radius-sm); }
+  .g1 { background: linear-gradient(135deg, #0E7C7B, #062525); }
+  .g2 { background: linear-gradient(180deg, #0E7C7B 0%, #4A2D3F 50%, #4A422D 100%); }
+  .g3 { background: linear-gradient(90deg, #1E1E1E 0%, #313131 100%); }
+
+  /* Icons */
+  .icon-row svg { color: var(--color-text); }
+  .icon-row .muted { color: var(--color-subtext); }
+  .icon-row .pri { color: var(--color-primary-text); }
+
+  /* Separator */
+  .sep-h { width: 100%; height: 1px; background: var(--color-border); margin: 12px 0; }
+  .sep-v { width: 1px; align-self: stretch; background: var(--color-border); margin: 0 12px; min-height: 32px; }
+
+  /* Spinner */
+  @keyframes aurum-spin { to { transform: rotate(360deg); } }
+  .spin { display: inline-block; border-radius: 50%; border-style: solid; border-right-color: transparent !important; animation: aurum-spin 0.7s linear infinite; }
+  .s-xs { width: 12px; height: 12px; border-width: 1.5px; }
+  .s-sm { width: 16px; height: 16px; border-width: 2px; }
+  .s-md { width: 20px; height: 20px; border-width: 2px; }
+  .s-lg { width: 32px; height: 32px; border-width: 2.5px; }
+
+  /* Shape */
+  .shape { display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--color-text); font-weight: 500; }
+  .sq { border-radius: var(--radius-xs); }
+  .ci { border-radius: 50%; }
+  .sz-xs { width: 16px; height: 16px; font-size: 10px; }
+  .sz-sm { width: 24px; height: 24px; font-size: 11px; }
+  .sz-md { width: 32px; height: 32px; font-size: 13px; }
+  .sz-lg { width: 48px; height: 48px; font-size: 16px; }
+  .bg-surface { background: var(--color-surface); }
+  .bg-primary-subtle { background: var(--color-primary-subtle); color: var(--color-primary-text); }
+  .bg-card-bordered { background: var(--color-card); border: 1px solid var(--color-border); }
+</style>
+</head>
+<body>
+  <div class="grid">
+
+    <div class="tile" style="grid-column: 1 / -1;">
+      <h4>LinearGradient</h4>
+      <div class="desc">CSS gradient with start→end vector · matches react-native-linear-gradient API</div>
+      <div style="display: grid; gap: 8px; grid-template-columns: 1fr 1fr 1fr;">
+        <div class="grad g1"></div>
+        <div class="grad g2"></div>
+        <div class="grad g3"></div>
+      </div>
+    </div>
+
+    <div class="tile">
+      <h4>Lucide Icons</h4>
+      <div class="desc">Sized to xs/sm/md/lg/xl, color follows token or currentColor</div>
+      <div class="row icon-row">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="muted"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="pri"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+      </div>
+      <div class="row icon-row" style="margin-top: 12px;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21V5a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v16l7-5z"/></svg>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+      </div>
+    </div>
+
+    <div class="tile">
+      <h4>Separator</h4>
+      <div class="desc">Horizontal · vertical · with spacing token</div>
+      <div style="font-size: 13px; color: var(--color-subtext);">Above</div>
+      <div class="sep-h"></div>
+      <div style="font-size: 13px; color: var(--color-subtext);">Below</div>
+      <div class="row" style="margin-top: 16px;">
+        <span style="font-size: 13px;">Files</span>
+        <div class="sep-v"></div>
+        <span style="font-size: 13px;">Activity</span>
+        <div class="sep-v"></div>
+        <span style="font-size: 13px;">Members</span>
+      </div>
+    </div>
+
+    <div class="tile">
+      <h4>Spinner</h4>
+      <div class="desc">Indeterminate · inherits currentColor</div>
+      <div class="row">
+        <span class="spin s-xs" style="color: var(--color-subtext)"></span>
+        <span class="spin s-sm" style="color: var(--color-text)"></span>
+        <span class="spin s-md" style="color: var(--color-primary)"></span>
+        <span class="spin s-lg" style="color: var(--color-text)"></span>
+      </div>
+      <div class="row" style="margin-top: 16px;">
+        <button style="display: inline-flex; align-items: center; gap: 8px; height: 32px; padding: 0 14px; background: var(--color-primary); color: #fff; border: 0; border-radius: var(--radius-sm); font-size: 13px; font-family: inherit; font-weight: 500;">
+          <span class="spin s-sm" style="color: #fff"></span>
+          Saving…
+        </button>
+      </div>
+    </div>
+
+    <div class="tile">
+      <h4>Square &amp; Circle</h4>
+      <div class="desc">Aspect-locked containers · accept token sizes (xs/sm/md/lg/xl) or px</div>
+      <div class="row">
+        <span class="shape sq sz-xs bg-surface"></span>
+        <span class="shape sq sz-sm bg-surface"></span>
+        <span class="shape sq sz-md bg-primary-subtle">A</span>
+        <span class="shape sq sz-lg bg-card-bordered">A</span>
+      </div>
+      <div class="row" style="margin-top: 12px;">
+        <span class="shape ci sz-xs bg-surface"></span>
+        <span class="shape ci sz-sm bg-surface"></span>
+        <span class="shape ci sz-md bg-primary-subtle">●</span>
+        <span class="shape ci sz-lg bg-card-bordered">●</span>
+      </div>
+    </div>
+
+  </div>
+</body></html>

@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8" />
+<title>Aurum — Semantic colors</title>
+<link rel="stylesheet" href="../colors_and_type.css" />
+<style>
+  body { margin: 0; padding: 20px; background: var(--color-background); color: var(--color-text); font-family: var(--font-sans); }
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .swatch { background: var(--color-card); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 16px; display: flex; flex-direction: column; gap: 10px; }
+  .chip { width: 100%; height: 56px; border-radius: var(--radius-sm); }
+  .row { display: flex; justify-content: space-between; align-items: baseline; }
+  .name { font-size: 14px; font-weight: 500; }
+  .hex { font-size: 11px; color: var(--color-subtext); letter-spacing: 0.04em; text-transform: uppercase; }
+  .desc { font-size: 12px; color: var(--color-subtext); line-height: 1.4; }
+</style>
+</head>
+<body>
+<div class="grid">
+  <div class="swatch"><div class="chip" style="background:#1D9E75"></div><div class="row"><span class="name">success</span><span class="hex">#1D9E75</span></div><div class="desc">Confirmation, paired connections, charging-complete.</div></div>
+  <div class="swatch"><div class="chip" style="background:#E24B4A"></div><div class="row"><span class="name">error</span><span class="hex">#E24B4A</span></div><div class="desc">Validation failures, disconnects, destructive confirms.</div></div>
+  <div class="swatch"><div class="chip" style="background:#EF9F27"></div><div class="row"><span class="name">warning</span><span class="hex">#EF9F27</span></div><div class="desc">Low battery, soft conflicts, attention required.</div></div>
+</div>
+</body>
+</html>

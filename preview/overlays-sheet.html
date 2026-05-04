@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8" />
+<title>Aurum — Sheet</title>
+<link rel="stylesheet" href="../colors_and_type.css" />
+<style>
+  body { margin: 0; padding: 0; background: var(--color-background); color: var(--color-text); font-family: var(--font-sans); height: 100vh; overflow: hidden; }
+  .stage { position: relative; width: 100%; height: 100%; }
+  .bg-content { padding: 32px; color: var(--color-subtext); font-size: 13px; line-height: 1.6; max-width: 360px; }
+  .scrim { position: absolute; inset: 0; background: var(--color-scrim); }
+  .sheet {
+    position: absolute; top: 0; right: 0; bottom: 0;
+    width: min(380px, 100%);
+    background: var(--color-surface);
+    border-left: 1px solid var(--color-border);
+    border-top-left-radius: var(--radius-lg);
+    border-bottom-left-radius: var(--radius-lg);
+    padding: 24px;
+    display: flex; flex-direction: column; gap: 16px;
+    box-shadow: var(--shadow-lg);
+  }
+  .h-row { display: flex; align-items: center; justify-content: space-between; }
+  .title { margin: 0; font-size: 18px; font-weight: 600; }
+  .close { background: transparent; border: 0; color: var(--color-subtext); font-size: 22px; cursor: pointer; line-height: 1; }
+  .group { display: flex; flex-direction: column; gap: 6px; }
+  .group label { font-size: 12px; color: var(--color-subtext); }
+  .input {
+    background: var(--color-input); border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm); height: 36px; padding: 0 12px;
+    color: var(--color-text); font-family: var(--font-sans); font-size: 14px;
+  }
+  textarea.input { height: 88px; padding: 10px 12px; resize: none; line-height: 1.5; }
+  .footer { margin-top: auto; display: flex; justify-content: flex-end; gap: 8px; }
+  .btn { font-family: var(--font-sans); font-weight: 500; font-size: 14px; height: 36px; padding: 0 16px; border-radius: var(--radius-sm); border: 1px solid; cursor: pointer; }
+  .btn-secondary { background: var(--color-card); border-color: var(--color-border); color: var(--color-text); }
+  .btn-primary { background: var(--color-primary); border-color: var(--color-primary); color: #fff; }
+</style>
+</head>
+<body>
+<div class="stage">
+  <div class="bg-content">
+    <strong style="color:var(--color-text)">Documents</strong><br/>
+    248 items · sorted by recently edited
+  </div>
+  <div class="scrim"></div>
+  <aside class="sheet" role="dialog" aria-modal="true">
+    <div class="h-row">
+      <h2 class="title">New document</h2>
+      <button class="close" aria-label="Close">×</button>
+    </div>
+    <div class="group">
+      <label>Title</label>
+      <input class="input" value="Q3 retrospective" />
+    </div>
+    <div class="group">
+      <label>Description</label>
+      <textarea class="input">A short summary of what the document is for…</textarea>
+    </div>
+    <div class="footer">
+      <button class="btn btn-secondary">Cancel</button>
+      <button class="btn btn-primary">Create</button>
+    </div>
+  </aside>
+</div>
+</body></html>

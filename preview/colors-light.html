@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8" />
+<title>Aurum — Light surfaces</title>
+<link rel="stylesheet" href="../colors_and_type.css" />
+<style>
+  body { margin: 0; padding: 20px; background: var(--color-background); color: var(--color-text); font-family: var(--font-sans); }
+  .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .swatch { background: var(--color-card); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 12px; display: flex; flex-direction: column; gap: 8px; }
+  .chip { width: 100%; height: 40px; border-radius: var(--radius-sm); border: 1px solid var(--color-border); }
+  .row { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+  .name { font-size: 13px; font-weight: 500; }
+  .hex { font-size: 11px; color: var(--color-subtext); font-variant-numeric: tabular-nums; letter-spacing: 0.04em; text-transform: uppercase; }
+</style>
+</head>
+<body>
+<div class="grid">
+  <div class="swatch"><div class="chip" style="background:#F0F0EE"></div><div class="row"><span class="name">background</span><span class="hex">#F0F0EE</span></div></div>
+  <div class="swatch"><div class="chip" style="background:#F7F7F5"></div><div class="row"><span class="name">surface</span><span class="hex">#F7F7F5</span></div></div>
+  <div class="swatch"><div class="chip" style="background:#F7F7F5"></div><div class="row"><span class="name">card</span><span class="hex">#F7F7F5</span></div></div>
+  <div class="swatch"><div class="chip" style="background:#D8D8D6"></div><div class="row"><span class="name">border</span><span class="hex">#D8D8D6</span></div></div>
+  <div class="swatch"><div class="chip" style="background:#EEEEED"></div><div class="row"><span class="name">input</span><span class="hex">#EEEEED</span></div></div>
+  <div class="swatch"><div class="chip" style="background:#1A1A1A"></div><div class="row"><span class="name">text</span><span class="hex">#1A1A1A</span></div></div>
+  <div class="swatch"><div class="chip" style="background:#999999"></div><div class="row"><span class="name">subtext</span><span class="hex">#999999</span></div></div>
+  <div class="swatch"><div class="chip" style="background:#AAAAAA"></div><div class="row"><span class="name">placeholder</span><span class="hex">#AAAAAA</span></div></div>
+</div>
+</body>
+</html>

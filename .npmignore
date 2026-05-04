@@ -1,0 +1,12 @@
+# Source-control noise that shouldn't ship to npm
+.github/
+.vscode/
+.idea/
+preview/
+*.html
+*.tgz
+.eslintrc.cjs
+.eslintcache
+tsconfig.json
+tsup.config.ts
+node_modules/

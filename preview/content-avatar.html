@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8" />
+<title>Aurum — Avatar</title>
+<link rel="stylesheet" href="../colors_and_type.css" />
+<style>
+  body { margin: 0; padding: 32px; background: var(--color-background); color: var(--color-text); font-family: var(--font-sans); }
+  .row { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+  .row + .row { margin-top: 24px; }
+  .avatar { display: inline-flex; align-items: center; justify-content: center; border-radius: 50%; background: var(--color-surface); color: var(--color-text); font-weight: 500; user-select: none; position: relative; flex-shrink: 0; overflow: hidden; }
+  .a-xs { width: 24px; height: 24px; font-size: 10px; }
+  .a-sm { width: 32px; height: 32px; font-size: 12px; }
+  .a-md { width: 40px; height: 40px; font-size: 14px; }
+  .a-lg { width: 56px; height: 56px; font-size: 18px; }
+  .dot { position: absolute; right: 0; bottom: 0; width: 10px; height: 10px; border-radius: 50%; border: 2px solid var(--color-background); }
+  .dot.online { background: var(--color-success); }
+  .dot.busy { background: var(--color-error); }
+  .group { display: inline-flex; }
+  .group > * + * { margin-left: -8px; }
+  .group > * { box-shadow: 0 0 0 2px var(--color-background); }
+  .label { font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-subtext); width: 96px; }
+  .more { background: var(--color-surface); color: var(--color-subtext); font-size: 13px; }
+  .a-tint-1 { background: #2D4A4A; }
+  .a-tint-2 { background: #4A2D3F; }
+  .a-tint-3 { background: #4A422D; }
+</style>
+</head>
+<body>
+  <div class="row">
+    <span class="label">Sizes</span>
+    <span class="avatar a-xs a-tint-1">MC</span>
+    <span class="avatar a-sm a-tint-2">JL</span>
+    <span class="avatar a-md a-tint-3">RP</span>
+    <span class="avatar a-lg a-tint-1">EW</span>
+  </div>
+  <div class="row">
+    <span class="label">Status</span>
+    <span class="avatar a-md a-tint-2">MC<span class="dot online"></span></span>
+    <span class="avatar a-md a-tint-3">JL<span class="dot busy"></span></span>
+    <span class="avatar a-md a-tint-1">RP</span>
+  </div>
+  <div class="row">
+    <span class="label">Group</span>
+    <span class="group">
+      <span class="avatar a-md a-tint-1">MC</span>
+      <span class="avatar a-md a-tint-2">JL</span>
+      <span class="avatar a-md a-tint-3">RP</span>
+      <span class="avatar a-md more">+4</span>
+    </span>
+  </div>
+</body></html>

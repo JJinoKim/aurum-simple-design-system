@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8" />
+<title>Aurum — Image</title>
+<link rel="stylesheet" href="../colors_and_type.css" />
+<style>
+  body { margin: 0; padding: 32px; background: var(--color-background); color: var(--color-text); font-family: var(--font-sans); }
+  .grid { display: grid; gap: 16px; grid-template-columns: repeat(3, 1fr); max-width: 720px; }
+  .img { background: var(--color-surface); border-radius: var(--radius-sm); overflow: hidden; position: relative; aspect-ratio: 16/9; display: grid; place-items: center; color: var(--color-subtext); font-size: 13px; }
+  .img.r-md { border-radius: var(--radius-md); }
+  .img.r-lg { border-radius: var(--radius-lg); }
+  .img.r-full { aspect-ratio: 1; border-radius: 999px; width: 96px; height: 96px; }
+  .img.fallback { background: repeating-linear-gradient(45deg, transparent 0 8px, var(--color-border) 8px 9px); }
+  .gradient-1 { background: linear-gradient(135deg, #0E7C7B, #062525); }
+  .gradient-2 { background: linear-gradient(135deg, #4A2D3F, #2D4A4A); }
+  .gradient-3 { background: linear-gradient(135deg, #4A422D, #2D3F4A); }
+  .label { display: block; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-subtext); margin-bottom: 8px; }
+  .row + .row { margin-top: 24px; }
+</style>
+</head>
+<body>
+  <div class="row">
+    <span class="label">16:9 · radius variants</span>
+    <div class="grid">
+      <div class="img gradient-1"></div>
+      <div class="img r-md gradient-2"></div>
+      <div class="img r-lg gradient-3"></div>
+    </div>
+  </div>
+  <div class="row">
+    <span class="label">Round + fallback</span>
+    <div style="display: flex; gap: 16px; align-items: center;">
+      <div class="img r-full gradient-1"></div>
+      <div class="img r-full gradient-2"></div>
+      <div class="img fallback" style="width: 200px; aspect-ratio: 16/9;">Image unavailable</div>
+    </div>
+  </div>
+</body></html>

@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8" />
+<title>Aurum — ListItem</title>
+<link rel="stylesheet" href="../colors_and_type.css" />
+<style>
+  body { margin: 0; padding: 32px; background: var(--color-background); color: var(--color-text); font-family: var(--font-sans); }
+  .list { max-width: 480px; background: var(--color-card); border: 1px solid var(--color-border); border-radius: var(--radius-md); overflow: hidden; }
+  .item { display: flex; align-items: center; gap: 12px; padding: 12px 16px; cursor: pointer; transition: all 120ms; }
+  .item + .item { border-top: 1px solid var(--color-border); }
+  .item:hover { background: var(--color-surface); }
+  .item.selected { background: var(--color-primary-subtle); }
+  .avatar { width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center; color: var(--color-text); font-size: 12px; font-weight: 500; flex-shrink: 0; }
+  .a-1 { background: #2D4A4A; } .a-2 { background: #4A2D3F; } .a-3 { background: #4A422D; }
+  .body { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+  .title { font-size: 14px; font-weight: 500; color: var(--color-text); }
+  .subtitle { font-size: 13px; color: var(--color-subtext); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .trail { color: var(--color-subtext); font-size: 12px; display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+  .chev { width: 8px; height: 8px; border-right: 1.5px solid currentColor; border-top: 1.5px solid currentColor; transform: rotate(45deg); }
+  .badge { background: var(--color-primary); color: #fff; padding: 1px 6px; border-radius: 999px; font-size: 11px; font-weight: 500; }
+  .label { font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-subtext); margin-bottom: 8px; display: block; }
+</style>
+</head>
+<body>
+  <span class="label">Members · clickable rows</span>
+  <div class="list">
+    <div class="item">
+      <span class="avatar a-1">MC</span>
+      <div class="body">
+        <span class="title">Maya Chen</span>
+        <span class="subtitle">Owner · last active 14m ago</span>
+      </div>
+      <div class="trail"><span class="chev"></span></div>
+    </div>
+    <div class="item selected">
+      <span class="avatar a-2">JL</span>
+      <div class="body">
+        <span class="title">Jordan Lin</span>
+        <span class="subtitle">Editor · last active 2h ago</span>
+      </div>
+      <div class="trail"><span class="badge">3</span><span class="chev"></span></div>
+    </div>
+    <div class="item">
+      <span class="avatar a-3">RP</span>
+      <div class="body">
+        <span class="title">Rosa Park</span>
+        <span class="subtitle">Viewer · invited Tuesday</span>
+      </div>
+      <div class="trail"><span class="chev"></span></div>
+    </div>
+  </div>
+</body></html>

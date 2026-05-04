@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8" />
+<title>Aurum — Inputs</title>
+<link rel="stylesheet" href="../colors_and_type.css" />
+<style>
+  body { margin: 0; padding: 24px; background: var(--color-background); color: var(--color-text); font-family: var(--font-sans); }
+  .stack { display: flex; flex-direction: column; gap: 14px; }
+  .field { display: flex; flex-direction: column; gap: 8px; }
+  .label { font-size: 13px; font-weight: 500; color: var(--color-text); }
+  .hint { margin: 0; font-size: 13px; color: var(--color-subtext); }
+  .hint.error { color: var(--color-error); }
+  .input {
+    height: 36px; padding: 0 12px;
+    background: var(--color-input);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    color: var(--color-text);
+    font-family: var(--font-sans); font-size: 15px;
+    outline: none;
+  }
+  .input::placeholder { color: var(--color-placeholder); }
+  .input:focus { border-color: var(--color-primary); }
+  .input.error { border-color: var(--color-error); }
+  .row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .req { color: var(--color-error); font-weight: 400; margin-left: 2px; }
+</style>
+</head>
+<body>
+<div class="stack">
+  <div class="row">
+    <div class="field">
+      <span class="label">Email<span class="req">*</span></span>
+      <input class="input" placeholder="you@aurum.dev" />
+    </div>
+    <div class="field">
+      <span class="label">Password</span>
+      <input class="input error" type="password" value="abc" />
+      <p class="hint error">Must be at least 8 characters.</p>
+    </div>
+  </div>
+  <div class="field">
+    <span class="label">Notes</span>
+    <textarea class="input" style="height: 72px; padding: 10px 12px; line-height: 1.45; resize: vertical;" placeholder="Optional. Markdown supported."></textarea>
+  </div>
+</div>
+</body></html>

@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8" />
+<title>Aurum — Primary teal</title>
+<link rel="stylesheet" href="../colors_and_type.css" />
+<style>
+  body { margin: 0; padding: 20px; background: var(--color-background); color: var(--color-text); font-family: var(--font-sans); }
+  .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .col { display: flex; flex-direction: column; gap: 10px; }
+  .col h4 { margin: 0 0 4px 0; font-size: 11px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-subtext); }
+  .swatch {
+    background: var(--color-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    padding: 10px 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .chip { width: 36px; height: 36px; border-radius: var(--radius-xs); border: 1px solid var(--color-border); flex-shrink: 0; }
+  .meta { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+  .name { font-size: 13px; font-weight: 500; }
+  .hex { font-size: 11px; color: var(--color-subtext); letter-spacing: 0.04em; }
+</style>
+</head>
+<body>
+<div class="grid">
+  <div class="col">
+    <h4>Dark mode</h4>
+    <div class="swatch"><div class="chip" style="background:#0E7C7B"></div><div class="meta"><span class="name">primary</span><span class="hex">#0E7C7B</span></div></div>
+    <div class="swatch"><div class="chip" style="background:#0A6362"></div><div class="meta"><span class="name">primary-hover</span><span class="hex">#0A6362</span></div></div>
+    <div class="swatch"><div class="chip" style="background:#062525"></div><div class="meta"><span class="name">primary-subtle</span><span class="hex">#062525</span></div></div>
+    <div class="swatch"><div class="chip" style="background:#0E7C7B"></div><div class="meta"><span class="name">primary-text</span><span class="hex">#0E7C7B</span></div></div>
+  </div>
+  <div class="col">
+    <h4>Light mode</h4>
+    <div class="swatch"><div class="chip" style="background:#0E7C7B"></div><div class="meta"><span class="name">primary</span><span class="hex">#0E7C7B</span></div></div>
+    <div class="swatch"><div class="chip" style="background:#0A6362"></div><div class="meta"><span class="name">primary-hover</span><span class="hex">#0A6362</span></div></div>
+    <div class="swatch"><div class="chip" style="background:#D0EFED"></div><div class="meta"><span class="name">primary-subtle</span><span class="hex">#D0EFED</span></div></div>
+    <div class="swatch"><div class="chip" style="background:#0A6362"></div><div class="meta"><span class="name">primary-text</span><span class="hex">#0A6362</span></div></div>
+  </div>
+</div>
+</body>
+</html>

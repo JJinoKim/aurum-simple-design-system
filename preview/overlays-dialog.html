@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8" />
+<title>Aurum — Dialog</title>
+<link rel="stylesheet" href="../colors_and_type.css" />
+<style>
+  body { margin: 0; padding: 0; background: var(--color-background); color: var(--color-text); font-family: var(--font-sans); height: 100vh; display: grid; place-items: center; overflow: hidden; }
+  .stage { position: relative; width: 100%; height: 100%; display: grid; place-items: center; background:
+    linear-gradient(180deg, rgba(255,255,255,0.02), transparent 40%),
+    var(--color-background); }
+  .scrim { position: absolute; inset: 0; background: var(--color-scrim); }
+  .dialog {
+    position: relative;
+    width: min(420px, calc(100% - 48px));
+    background: var(--color-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    box-shadow: var(--shadow-lg);
+    display: flex; flex-direction: column; gap: 12px;
+  }
+  .title { margin: 0; font-size: 20px; font-weight: 600; line-height: 1.2; letter-spacing: -0.01em; }
+  .desc { margin: 0; font-size: 14px; line-height: 1.5; color: var(--color-subtext); }
+  .footer { display: flex; justify-content: flex-end; gap: 8px; margin-top: 8px; }
+  .btn { font-family: var(--font-sans); font-weight: 500; font-size: 14px; height: 36px; padding: 0 16px; border-radius: var(--radius-sm); border: 1px solid; cursor: pointer; }
+  .btn-secondary { background: var(--color-card); border-color: var(--color-border); color: var(--color-text); }
+  .btn-primary { background: var(--color-primary); border-color: var(--color-primary); color: #fff; }
+</style>
+</head>
+<body>
+<div class="stage">
+  <div class="scrim"></div>
+  <div class="dialog" role="dialog" aria-modal="true">
+    <h2 class="title">Discard changes?</h2>
+    <p class="desc">Your draft has unsaved edits. Closing now will return the document to its last saved state.</p>
+    <div class="footer">
+      <button class="btn btn-secondary">Keep editing</button>
+      <button class="btn btn-primary">Discard</button>
+    </div>
+  </div>
+</div>
+</body></html>

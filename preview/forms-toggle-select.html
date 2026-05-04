@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8" />
+<title>Aurum — Toggle, Select</title>
+<link rel="stylesheet" href="../colors_and_type.css" />
+<style>
+  body { margin: 0; padding: 24px; background: var(--color-background); color: var(--color-text); font-family: var(--font-sans); font-size: 15px; }
+  .stack { display: flex; flex-direction: column; gap: 18px; }
+  .row { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+  .label { font-size: 11px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-subtext); width: 72px; flex-shrink: 0; }
+  .tg { display: inline-flex; padding: 2px; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-sm); height: 36px; }
+  .seg { padding: 0 14px; display: inline-flex; align-items: center; font-weight: 500; color: var(--color-subtext); border: 1px solid transparent; border-radius: var(--radius-xs); cursor: pointer; }
+  .seg.on { background: var(--color-card); border-color: var(--color-border); color: var(--color-text); }
+  .select {
+    appearance: none; height: 36px;
+    padding: 0 32px 0 12px;
+    background: var(--color-input);
+    border: 1px solid var(--color-border); border-radius: var(--radius-sm);
+    color: var(--color-text); font-family: var(--font-sans); font-size: 15px;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'><path d='M1 1L6 6L11 1' stroke='%23888888' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+    background-repeat: no-repeat; background-position: right 12px center;
+    outline: none; cursor: pointer;
+  }
+</style>
+</head>
+<body>
+<div class="stack">
+  <div class="row">
+    <span class="label">Toggle</span>
+    <div class="tg">
+      <span class="seg">Day</span>
+      <span class="seg on">Week</span>
+      <span class="seg">Month</span>
+    </div>
+  </div>
+  <div class="row">
+    <span class="label">Select</span>
+    <select class="select">
+      <option>Standard</option>
+      <option>Sport</option>
+      <option>Eco</option>
+    </select>
+  </div>
+</div>
+</body></html>

@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8" />
+<title>Aurum — Accordion</title>
+<link rel="stylesheet" href="../colors_and_type.css" />
+<style>
+  body { margin: 0; padding: 32px; background: var(--color-background); color: var(--color-text); font-family: var(--font-sans); }
+  .acc { max-width: 520px; }
+  .item { border-bottom: 1px solid var(--color-border); }
+  .header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 16px 0; font-size: 15px; font-weight: 500; color: var(--color-text);
+    cursor: pointer; user-select: none;
+  }
+  .chev { width: 12px; height: 12px; transition: transform 200ms ease; opacity: 0.7; }
+  .item.open .chev { transform: rotate(180deg); }
+  .body { padding: 0 0 16px; font-size: 14px; line-height: 1.6; color: var(--color-subtext); }
+  .item.closed .body { display: none; }
+</style>
+</head>
+<body>
+<div class="acc">
+  <div class="item open">
+    <div class="header">Charging
+      <svg class="chev" viewBox="0 0 14 9" fill="none" aria-hidden="true"><path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <div class="body">
+      Charges run on the 1st of each month using the payment method on file.
+      Failed charges retry up to three times before suspending access.
+    </div>
+  </div>
+  <div class="item closed">
+    <div class="header">Refunds
+      <svg class="chev" viewBox="0 0 14 9" fill="none" aria-hidden="true"><path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+  </div>
+  <div class="item closed">
+    <div class="header">Plan changes
+      <svg class="chev" viewBox="0 0 14 9" fill="none" aria-hidden="true"><path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+  </div>
+  <div class="item closed">
+    <div class="header">Tax &amp; receipts
+      <svg class="chev" viewBox="0 0 14 9" fill="none" aria-hidden="true"><path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+  </div>
+</div>
+</body></html>

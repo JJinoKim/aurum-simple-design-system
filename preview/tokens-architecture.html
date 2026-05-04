@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8" />
+<title>Aurum — Token architecture</title>
+<link rel="stylesheet" href="../colors_and_type.css" />
+<style>
+  body { margin: 0; padding: 24px; background: var(--color-background); color: var(--color-text); font-family: var(--font-sans); }
+  .flow { display: grid; grid-template-columns: 1fr 24px 1fr 24px 1fr; align-items: stretch; gap: 0; }
+  .layer {
+    background: var(--color-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 14px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .arrow { display: flex; align-items: center; justify-content: center; color: var(--color-subtext); font-size: 18px; }
+  .tag { font-size: 10px; color: var(--color-subtext); letter-spacing: 0.06em; text-transform: uppercase; }
+  .name { font-size: 14px; font-weight: 600; }
+  .desc { font-size: 12px; color: var(--color-subtext); line-height: 1.4; }
+  code { font-family: var(--font-mono); font-size: 11px; color: var(--color-primary); background: var(--color-input); padding: 1px 5px; border-radius: 3px; }
+</style>
+</head>
+<body>
+<div class="flow">
+  <div class="layer">
+    <span class="tag">1 · Raw</span>
+    <span class="name">palette</span>
+    <span class="desc">Named hexes. <code>teal500</code>, <code>gray850</code>. Never imported by components.</span>
+  </div>
+  <div class="arrow">→</div>
+  <div class="layer">
+    <span class="tag">2 · Semantic</span>
+    <span class="name">darkColors / lightColors</span>
+    <span class="desc">Role aliases. <code>card</code>, <code>primary</code>, <code>border</code>. Identical shape across modes.</span>
+  </div>
+  <div class="arrow">→</div>
+  <div class="layer">
+    <span class="tag">3 · Theme</span>
+    <span class="name">lightTheme / darkTheme</span>
+    <span class="desc">Assembled object passed to <code>&lt;ThemeProvider&gt;</code>. Web + RN consume the same shape.</span>
+  </div>
+</div>
+</body>
+</html>

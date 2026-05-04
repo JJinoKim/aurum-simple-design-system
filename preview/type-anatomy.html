@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8" />
+<title>Aurum — Type anatomy</title>
+<link rel="stylesheet" href="../colors_and_type.css" />
+<style>
+  body { margin: 0; padding: 28px; background: var(--color-background); color: var(--color-text); font-family: var(--font-sans); }
+  .stack { display: flex; flex-direction: column; gap: 14px; }
+  .specimen { display: flex; align-items: baseline; gap: 16px; }
+  .tag { font-size: 11px; color: var(--color-subtext); letter-spacing: 0.04em; text-transform: uppercase; min-width: 64px; font-variant-numeric: tabular-nums; }
+  .readout { font-size: 28px; font-weight: 500; line-height: 1; font-variant-numeric: tabular-nums; }
+  .readout .unit { font-size: 13px; color: var(--color-subtext); margin-left: 6px; letter-spacing: 0.04em; text-transform: uppercase; }
+  .display { font-size: 36px; font-weight: 600; line-height: 1.2; letter-spacing: -0.01em; }
+  .body { font-size: 15px; font-weight: 400; line-height: 1.45; max-width: 540px; color: var(--color-subtext); }
+</style>
+</head>
+<body>
+<div class="stack">
+  <div class="specimen"><span class="tag">Readout</span><span class="readout">120<span class="unit">km/h</span></span></div>
+  <div class="specimen"><span class="tag">Readout</span><span class="readout">82<span class="unit">%</span></span></div>
+  <div class="specimen"><span class="tag">Display</span><span class="display">Inter, variable.</span></div>
+  <div class="specimen"><span class="tag">Body</span><span class="body">Tabular figures keep the digits steady. Optical sizing tightens spacing at large weights and loosens it at small ones.</span></div>
+</div>
+</body>
+</html>

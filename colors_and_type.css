@@ -1,0 +1,232 @@
+/* =============================================================================
+   Aurum Design System — CSS variable bridge
+   -----------------------------------------------------------------------------
+   Used by the HTML preview cards in /preview. The TypeScript token files in
+   /tokens are the source of truth; this file mirrors them as CSS variables so
+   pure-HTML surfaces (preview cards, marketing pages) can consume the same
+   values without a JS runtime.
+   ============================================================================= */
+
+/* -- Web font (user-supplied Inter variable fonts) ----------------------- */
+@font-face {
+  font-family: 'Inter';
+  src: url('fonts/Inter-VariableFont_opsz_wght.ttf') format('truetype-variations'),
+       url('fonts/Inter-VariableFont_opsz_wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Inter';
+  src: url('fonts/Inter-Italic-VariableFont_opsz_wght.ttf') format('truetype-variations'),
+       url('fonts/Inter-Italic-VariableFont_opsz_wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* -- Base (dark-first; light overrides below) ----------------------------- */
+:root,
+[data-theme='dark'] {
+  /* Color — surfaces */
+  --color-background:  #1E1E1E;
+  --color-surface:     #272727;
+  --color-card:        #313131;
+  --color-border:      #3A3A3A;
+  --color-input:       #272727;
+
+  /* Color — text */
+  --color-text:        #E8E8E8;
+  --color-subtext:     #888888;
+  --color-placeholder: #666666;
+
+  /* Color — brand + status */
+  --color-primary:        #0E7C7B;
+  --color-primary-hover:  #0A6362;
+  --color-primary-subtle: #062525;
+  --color-primary-text:   #0E7C7B;
+  --color-success:        #1D9E75;
+  --color-error:          #E24B4A;
+  --color-warning:        #EF9F27;
+
+  --color-scrim: rgba(0, 0, 0, 0.5);
+
+  /* Shadow (dark — minimal) */
+  --shadow-none: none;
+  --shadow-sm:   0 2px 8px rgba(0, 0, 0, 0.4);
+  --shadow-md:   0 4px 16px rgba(0, 0, 0, 0.5);
+  --shadow-lg:   0 12px 32px rgba(0, 0, 0, 0.55);
+}
+
+[data-theme='light'] {
+  --color-background:  #F0F0EE;
+  --color-surface:     #F7F7F5;
+  --color-card:        #F7F7F5;
+  --color-border:      #D8D8D6;
+  --color-input:       #EEEEED;
+
+  --color-text:        #1A1A1A;
+  --color-subtext:     #999999;
+  --color-placeholder: #AAAAAA;
+
+  --color-primary:        #0E7C7B;
+  --color-primary-hover:  #0A6362;
+  --color-primary-subtle: #D0EFED;
+  --color-primary-text:   #0A6362;
+  --color-success:        #1D9E75;
+  --color-error:          #E24B4A;
+  --color-warning:        #EF9F27;
+
+  --color-scrim: rgba(0, 0, 0, 0.3);
+
+  --shadow-none: none;
+  --shadow-sm:   0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-md:   0 4px 12px rgba(0, 0, 0, 0.06);
+  --shadow-lg:   0 12px 32px rgba(0, 0, 0, 0.08);
+}
+
+/* -- Mode-agnostic tokens (shared across light + dark) -------------------- */
+:root {
+  /* Spacing */
+  --space-0: 0px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+
+  /* Radius */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  /* Sizes */
+  --size-control-sm: 28px;
+  --size-control-md: 36px;
+  --size-control-lg: 44px;
+  --size-control-xl: 56px;
+  --size-app-bar-web: 56px;
+  --size-app-bar-native: 48px;
+  --size-icon-sm: 16px;
+  --size-icon-md: 20px;
+  --size-icon-lg: 24px;
+  --size-hairline: 1px;
+
+  /* Typography — atoms */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: 'Inter', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  --font-size-xs:  11px;
+  --font-size-sm:  13px;
+  --font-size-md:  15px;
+  --font-size-lg:  18px;
+  --font-size-xl:  22px;
+  --font-size-2xl: 28px;
+  --font-size-3xl: 36px;
+
+  --font-weight-regular:  400;
+  --font-weight-medium:   500;
+  --font-weight-semibold: 600;
+
+  --line-height-tight:   1;
+  --line-height-display: 1.2;
+  --line-height-body:    1.45;
+
+  --letter-spacing-tight:  -0.01em;
+  --letter-spacing-normal: 0;
+  --letter-spacing-wide:   0.04em;
+
+  /* Animation */
+  --duration-fast: 120ms;
+  --duration-base: 200ms;
+  --duration-slow: 320ms;
+  --easing-standard: cubic-bezier(0.2, 0.8, 0.2, 1);
+
+  /* z-index */
+  --z-base: 0;
+  --z-raised: 1;
+  --z-sticky: 100;
+  --z-dropdown: 1000;
+  --z-overlay: 1100;
+  --z-modal: 1200;
+  --z-popover: 1300;
+  --z-toast: 1400;
+}
+
+/* =============================================================================
+   Semantic text recipes — drop-in classes for HTML previews
+   ============================================================================= */
+
+.t-display {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-display);
+  letter-spacing: var(--letter-spacing-tight);
+}
+.t-h1 {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-display);
+  letter-spacing: var(--letter-spacing-tight);
+}
+.t-h2 {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-display);
+  letter-spacing: var(--letter-spacing-tight);
+}
+.t-h3 {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-display);
+}
+.t-body {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-body);
+}
+.t-body-strong {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-body);
+}
+.t-label {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-body);
+}
+.t-caption {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-body);
+  color: var(--color-subtext);
+}
+.t-micro {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-body);
+  letter-spacing: var(--letter-spacing-wide);
+  text-transform: uppercase;
+}
+.t-readout {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-tight);
+  font-variant-numeric: tabular-nums;
+}

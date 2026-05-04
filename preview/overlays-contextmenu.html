@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8" />
+<title>Aurum — ContextMenu</title>
+<link rel="stylesheet" href="../colors_and_type.css" />
+<style>
+  body { margin: 0; padding: 0; background: var(--color-background); color: var(--color-text); font-family: var(--font-sans); height: 100vh; overflow: hidden; }
+  .stage { position: relative; width: 100%; height: 100%; padding: 32px; box-sizing: border-box; display: grid; gap: 12px; grid-template-columns: repeat(3, 1fr); align-content: start; }
+  .file { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 14px; display: flex; flex-direction: column; gap: 10px; }
+  .file .icon { width: 32px; height: 40px; background: var(--color-card); border: 1px solid var(--color-border); border-radius: var(--radius-xs); }
+  .file.selected { border-color: var(--color-primary); background: var(--color-primary-subtle); }
+  .file .name { font-size: 13px; font-weight: 500; }
+  .file .meta { font-size: 11px; color: var(--color-subtext); }
+  .menu {
+    position: absolute;
+    top: 110px; left: 220px;
+    min-width: 220px;
+    background: var(--color-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 4px;
+    box-shadow: var(--shadow-md);
+    font-size: 14px;
+  }
+  .item { display: flex; align-items: center; height: 30px; padding: 0 10px; border-radius: var(--radius-xs); cursor: pointer; }
+  .item .shortcut { margin-left: auto; color: var(--color-subtext); font-size: 12px; }
+  .item:hover, .item.is-active { background: var(--color-surface); }
+  .item.danger { color: var(--color-error); }
+  .sep { height: 1px; background: var(--color-border); margin: 4px 0; }
+  .crosshair { position: absolute; width: 12px; height: 12px; top: 102px; left: 212px; border: 1.5px solid var(--color-primary); border-radius: 50%; }
+</style>
+</head>
+<body>
+<div class="stage">
+  <div class="file">
+    <div class="icon"></div>
+    <div class="name">Roadmap.aurum</div>
+    <div class="meta">2 days ago</div>
+  </div>
+  <div class="file selected">
+    <div class="icon"></div>
+    <div class="name">Q3 retrospective</div>
+    <div class="meta">14 minutes ago</div>
+  </div>
+  <div class="file">
+    <div class="icon"></div>
+    <div class="name">Onboarding flow</div>
+    <div class="meta">Last week</div>
+  </div>
+  <div class="crosshair"></div>
+  <div class="menu" role="menu">
+    <div class="item">Open <span class="shortcut">↵</span></div>
+    <div class="item is-active">Open in new tab <span class="shortcut">⌘↵</span></div>
+    <div class="sep"></div>
+    <div class="item">Rename <span class="shortcut">F2</span></div>
+    <div class="item">Duplicate <span class="shortcut">⌘D</span></div>
+    <div class="item">Copy link</div>
+    <div class="sep"></div>
+    <div class="item danger">Move to trash <span class="shortcut">⌫</span></div>
+  </div>
+</div>
+</body></html>
